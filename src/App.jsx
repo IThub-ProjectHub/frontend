@@ -1,13 +1,19 @@
-import { useState, createContext } from "react"
+import { useState } from "react"
+
 import Test from "./components/test"
 
-const App = () => {
-    const [user, setUser] = useState()
+import { UserStateContext } from "./contexts/contexts"
 
+const App = () => {
+    const [user, setUser] = useState("")
     return (
-        <UserStateContext.Provider value={user}>
-            <Test />
-        </UserStateContext.Provider>
+        <>
+            <h1>{user}</h1>
+            <UserStateContext.Provider value={{ user, setUser }}>
+                <Test />
+                <h2>ffef</h2>
+            </UserStateContext.Provider>
+        </>
     )
 }
 
