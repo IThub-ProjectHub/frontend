@@ -1,17 +1,32 @@
 import { useState } from "react"
 
-import Test from "./components/test"
-
 import { UserStateContext } from "./contexts/contexts"
+import { Routes, Route, BrowserRouter } from "react-router-dom"
+import MainPages from "./pages/MainPages"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 const App = () => {
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     return (
         <>
-            <h1>{user}</h1>
             <UserStateContext.Provider value={{ user, setUser }}>
-                <Test />
-                <h2>ffef</h2>
+                <BrowserRouter>
+                    <Routes>
+                        <Route
+                            path="main"
+                            element={<MainPages />}
+                        />
+                        <Route
+                            path="login"
+                            element={<Login />}
+                        />
+                        <Route
+                            path="register"
+                            element={<Register />}
+                        />
+                    </Routes>
+                </BrowserRouter>
             </UserStateContext.Provider>
         </>
     )
