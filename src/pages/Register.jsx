@@ -7,7 +7,7 @@ const baseUrl = "/api/users"
 
 const Register = () => {
     const navigate = useNavigate()
-    const { user } = useContext(UserStateContext)
+    const { user, setUser } = useContext(UserStateContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -26,7 +26,10 @@ const Register = () => {
                 name,
                 surname
             })
-            .then(() => navigate("/login"))
+            .then(res => {
+                localStorage.setItem("user", JSON.stringify(res.data))
+                setUser(res.data)
+            })
             .catch(error => {
                 setSubmit("Зарегистрироваться")
                 setError(error.response.data)

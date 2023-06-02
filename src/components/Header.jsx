@@ -1,4 +1,5 @@
 import { useState, useContext } from "react"
+import { Link } from "react-router-dom"
 import { UserStateContext } from "../contexts/contexts"
 const Header = () => {
     const { user } = useContext(UserStateContext)
@@ -9,37 +10,39 @@ const Header = () => {
         location.reload()
     }
 
+    const close = () => changeMenu(!menu)
+
     return (
         <div>
             <h2>ProjectHub</h2>
-            <nav onClick={() => changeMenu(!menu)}>
+            <nav onClick={close}>
                 menu
             </nav>
             <div style={{ display: menu ? "block" : "none" }}>
                 <div>
                     <h3>{user.name}</h3>
-                    <a href="#">
+                    <Link to="/main/profile" onClick={close}>
                         Профиль
-                    </a>
-                    <a href="#">
+                    </Link>
+                    <Link to="/main/settings" onClick={close}>
                         Изменить профиль
-                    </a>
-                    <a href="#" onClick={handleLogout}>
+                    </Link>
+                    <a href="/login" onClick={handleLogout}>
                         Выйти
                     </a>
                 </div>
-                <a href="#">
+                <Link to="/main" onClick={close}>
                     Главная
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="/main/create" onClick={close}>
                     Создать проект
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="/main/find" onClick={close}>
                     Поиск проекта
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="/main/tracker" onClick={close}>
                     Отрыть трекер
-                </a>
+                </Link>
             </div>
         </div>
     )

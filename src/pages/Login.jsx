@@ -17,6 +17,7 @@ const Login = () => {
     const [submit, setSubmit] = useState("Войти")
 
     useEffect(() => {
+
         if (user)
             navigate("/main")
     }, [user])
