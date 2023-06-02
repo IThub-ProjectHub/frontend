@@ -32,7 +32,6 @@ const Login = () => {
             .then(res => {
                 localStorage.setItem("user", JSON.stringify(res.data))
                 setUser(res.data)
-                navigate("/main")
             })
             .catch(error => {
                 setSubmit("Войти")
