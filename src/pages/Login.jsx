@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { UserStateContext } from "../contexts/contexts"
 import Notification from "../components/Notification"
 
+import { styles } from "../utils/styles"
+
 const baseUrl = "/api/login"
 
 const Login = () => {
@@ -15,7 +17,6 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState("Войти")
-
     useEffect(() => {
 
         if (user)
@@ -37,32 +38,47 @@ const Login = () => {
             .catch(error => {
                 setSubmit("Войти")
                 setError(error.response.data)
-                setTimeout(() => setError(null), 3000)
+                setTimeout(() => setError(null), 4000)
             })
     }
 
     return !user && <div>
-        {error && <Notification message={error} />}
-        <h1>Войдите в свой аккаунт</h1>
+        <div className="h-9 mt-[1px]">
+            {error && <Notification message={error} />}
+        </div>
+        <div className="">
+            <h1 className="text-[28px] text-center mt-20">
+                Project<span className="text-detail">Hub</span>
+            </h1>
+            <h2 className="text-center text-[20px] mb-5">Войдите в свой аккаунт</h2>
 
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={email}
-                placeholder="email"
-                onChange={({ target }) => setEmail(target.value)}
-            />
-            <input
-                type="text"
-                value={password}
-                placeholder="пароль"
-                onChange={({ target }) => setPassword(target.value)}
-            />
-            <button type="submit">{submit}</button>
-        </form>
-        <Link to="/register">
-            <p>Нет учетной записи? Регистрация</p>
-        </Link>
+            <form onSubmit={handleSubmit} className="flex flex-col max-w-[300px] mx-auto text-[18px]">
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={email}
+                    placeholder="Почта"
+                    onChange={({ target }) => setEmail(target.value)}
+                />
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={password}
+                    placeholder="Пароль"
+                    onChange={({ target }) => setPassword(target.value)}
+                />
+                <button
+                    type="submit"
+                    className="bg-detail  py-2 mx-auto px-16 mt-7"
+                >{submit}</button>
+            </form>
+            <Link to="/register">
+                <p className="text-center mt-7 font-semibold">
+                    Нет учетной записи?
+                    <span className="text-detail"> Регистрация</span>
+                </p>
+            </Link>
+        </div>
     </div>
 }
 

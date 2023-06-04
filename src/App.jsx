@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 import { UserStateContext } from "./contexts/contexts"
 import { Routes, Route, BrowserRouter } from "react-router-dom"
@@ -12,7 +12,7 @@ const App = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
     return (
-        <>
+        <div className=" text-white relative">
             <UserStateContext.Provider value={{ user, setUser }}>
                 <BrowserRouter>
                     <Routes>
@@ -35,7 +35,7 @@ const App = () => {
                     </Routes>
                 </BrowserRouter>
             </UserStateContext.Provider>
-        </>
+        </div>
     )
 }
 

@@ -4,7 +4,7 @@ import { UserStateContext } from "../contexts/contexts"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import Time from "../utils/Time"
+import time from "../utils/time"
 
 const MainPage = () => {
 
@@ -18,7 +18,7 @@ const MainPage = () => {
     }, [user])
 
     return (
-        <h2>{Time()}, {user.name}!</h2>
+        <h2>{time()}, {user.name}!</h2>
     )
 }
 
