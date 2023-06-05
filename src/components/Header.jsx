@@ -40,7 +40,7 @@ const Header = () => {
                     : <TfiClose className="text-white text-[20px]" />
                 }</div>
             </div>
-            <div className={`${menu ? "hidden" : "block"} absolute z-10 bg-main flex flex-col w-full items-center text-[18px] space-y-5`}>
+            <div className={`${menu ? "hidden" : "block"} absolute z-10 bg-main flex flex-col w-full h-full items-center text-[18px] space-y-5`}>
                 <div className="flex flex-col items-center my-10 space-y-2">
                     <h3 className="text-[20px] mb-2 font-bold">{user.name} {user.surname}</h3>
                     <NavItem text="Профиль" link="/main/profile" />

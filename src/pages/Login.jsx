@@ -58,6 +58,7 @@ const Login = () => {
                     type="text"
                     value={email}
                     placeholder="Почта"
+                    required
                     onChange={({ target }) => setEmail(target.value)}
                 />
                 <input
@@ -65,11 +66,12 @@ const Login = () => {
                     type="text"
                     value={password}
                     placeholder="Пароль"
+                    required
                     onChange={({ target }) => setPassword(target.value)}
                 />
                 <button
                     type="submit"
-                    className="bg-detail  py-2 mx-auto px-16 mt-7"
+                    className={styles.button}
                 >{submit}</button>
             </form>
             <Link to="/register">

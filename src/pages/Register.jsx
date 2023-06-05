@@ -29,10 +29,15 @@ const Register = () => {
                 name,
                 surname
             })
-            .then(res => {
-                localStorage.setItem("user", JSON.stringify(res.data))
-                setUser(res.data)
+            .then(() => axios.post("/api/login", {
+                email,
+                password
             })
+                .then(res => {
+                    localStorage.setItem("user", JSON.stringify(res.data))
+                    setUser(res.data)
+                })
+            )
             .catch(error => {
                 setSubmit("Зарегистрироваться")
                 setError(error.response.data)
@@ -63,6 +68,7 @@ const Register = () => {
                     type="text"
                     value={email}
                     placeholder="Почта"
+                    required
                     onChange={({ target }) => setEmail(target.value)}
                 />
                 <input
@@ -70,6 +76,7 @@ const Register = () => {
                     type="text"
                     value={password}
                     placeholder="Пароль"
+                    required
                     onChange={({ target }) => setPassword(target.value)}
                 />
                 <input
@@ -77,6 +84,7 @@ const Register = () => {
                     type="text"
                     value={name}
                     placeholder="Имя"
+                    required
                     onChange={({ target }) => setName(target.value)}
                 />
                 <input
@@ -84,11 +92,12 @@ const Register = () => {
                     type="text"
                     value={surname}
                     placeholder="Фамилия"
+                    required
                     onChange={({ target }) => setSurname(target.value)}
                 />
                 <button
                     type="submit"
-                    className="bg-detail  py-2 mx-auto px-10 mt-7"
+                    className={styles.button}
                 >{submit}</button>
             </form>
             <Link to="/login">
