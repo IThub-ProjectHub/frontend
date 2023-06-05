@@ -46,54 +46,58 @@ const Register = () => {
     }, [user])
 
     return !user && <div>
-        {error && <Notification message={error} />}
-        <h1 className="text-[28px] text-center mt-[6rem]">
-            Project<span className="text-detail">Hub</span>
-        </h1>
-        <h2 className="text-center text-[20px] mb-5">
-            Зарегистрируйтесь в ProjectHub!
-        </h2>
+        <div className="h-9 mt-[1px]">
+            {error && <Notification message={error} />}
+        </div>
+        <div>
+            <h1 className="text-[28px] text-center mt-20">
+                Project<span className="text-detail">Hub</span>
+            </h1>
+            <h2 className="text-center text-[20px] mb-5">
+                Зарегистрируйтесь в ProjectHub!
+            </h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col max-w-[300px] mx-auto text-[18px]">
-            <input
-                className={styles.input}
-                type="text"
-                value={email}
-                placeholder="Почта"
-                onChange={({ target }) => setEmail(target.value)}
-            />
-            <input
-                className={styles.input}
-                type="text"
-                value={password}
-                placeholder="Пароль"
-                onChange={({ target }) => setPassword(target.value)}
-            />
-            <input
-                className={styles.input}
-                type="text"
-                value={name}
-                placeholder="Имя"
-                onChange={({ target }) => setName(target.value)}
-            />
-            <input
-                className={styles.input}
-                type="text"
-                value={surname}
-                placeholder="Фамилия"
-                onChange={({ target }) => setSurname(target.value)}
-            />
-            <button
-                type="submit"
-                className="bg-detail  py-2 mx-auto px-10 mt-7"
-            >{submit}</button>
-        </form>
-        <Link to="/login">
-            <p className="text-center mt-7 font-semibold">
-                Есть учетная запись?
-                <span className="text-detail"> Вход</span>
-            </p>
-        </Link>
+            <form onSubmit={handleSubmit} className="flex flex-col max-w-[300px] mx-auto text-[18px]">
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={email}
+                    placeholder="Почта"
+                    onChange={({ target }) => setEmail(target.value)}
+                />
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={password}
+                    placeholder="Пароль"
+                    onChange={({ target }) => setPassword(target.value)}
+                />
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={name}
+                    placeholder="Имя"
+                    onChange={({ target }) => setName(target.value)}
+                />
+                <input
+                    className={styles.input}
+                    type="text"
+                    value={surname}
+                    placeholder="Фамилия"
+                    onChange={({ target }) => setSurname(target.value)}
+                />
+                <button
+                    type="submit"
+                    className="bg-detail  py-2 mx-auto px-10 mt-7"
+                >{submit}</button>
+            </form>
+            <Link to="/login">
+                <p className="text-center mt-7 font-semibold">
+                    Есть учетная запись?
+                    <span className="text-detail"> Вход</span>
+                </p>
+            </Link>
+        </div>
     </div>
 }
 
