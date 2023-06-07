@@ -19,7 +19,8 @@ export default {
         },
         textColor: {
             "detail": "#804DC1",
-            "white": "#FFF"
+            "white": "#FFF",
+            "gray": "#939393"
         }
     },
     plugins: [],
