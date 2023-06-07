@@ -37,8 +37,6 @@ const TrackProject = () => {
         setLoaded(true)
     }, [projectId])
 
-    console.log(project)
-
     return <>
         <h2 className="text-[28px] text-center mt-[40px] font-bold mb-8">Трекер</h2>
         {!loaded
@@ -50,7 +48,6 @@ const TrackProject = () => {
                     <ProjectTeam project={project} />
                     <button className={`${styles.button} block mx-auto w-[300px]`}>Открыть чат</button>
                     <button className={`${styles.button} block mx-auto w-[300px]`}>Просмотреть этап</button>
-                    {console.log(user)}
                     {creator
                         ? <button className={`${styles.button} block mb-2 mx-auto w-[300px]`}>Удалить проект</button>
                         : <button className={`${styles.button} block mb-2 mx-auto w-[300px]`}>Покинуть команду</button>

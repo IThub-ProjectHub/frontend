@@ -38,15 +38,19 @@ const FindProject = () => {
         }))
     }, [industry, client, search])
 
+    const handleLocation = (data) => {
+        navigate("/main/find/info", { state: data })
+    }
+
     return (filtered && <>
-        <div>
+        <div className="mx-auto max-w-xs">
             <h2 className="text-[28px] text-center mt-[40px] font-bold mb-8">Найти проект</h2>
 
             <input
-                className={styles.input}
+                className={`${styles.input} w-[300px]`}
                 type="text"
                 value={search}
-                placeholder="Название проекта"
+                placeholder="Введите название проекта"
                 onChange={({ target }) => setSearch(target.value)}
             />
             <label >
@@ -67,7 +71,7 @@ const FindProject = () => {
                 </select>
             </label>
             <label>
-                <h3 className={headers}>Кто твой клиент</h3>
+                <h3 className={headers}>Клиент</h3>
                 <select
                     className="select w-[250px] bg-main focus:outline-none border border-gray-500 focus:border-[#C292FF] p-2 rounded-sm mb-6 ml-3"
                     onChange={({ target }) => setClient(target.value)}
@@ -79,12 +83,22 @@ const FindProject = () => {
                 </select>
             </label>
         </div>
-        <div>{filtered.map(project => <div key={project.id}>
-            <h3>{project.name}</h3>
-            <p>{project.industry}</p>
-            <p>{project.users.length} {countTeam(project.users.length)}</p>
-            <p>{project.smdescription}</p>
-        </div>)}</div>
+        <div>
+            <h2 className={`${headers} `}>Список проектов</h2>
+            {filtered.map(project => <div
+                key={project.id}
+                className="max-w-[300px] mx-auto"
+            >
+                <h3>{project.name}</h3>
+                <p>{project.industry}</p>
+                <p>{project.users.length} {countTeam(project.users.length)}</p>
+                <p>{project.smdescription}</p>
+                <button
+                    className={`${styles.button}`}
+                    onClick={() => handleLocation(project)}
+                >Перейти</button>
+            </div>)}
+        </div>
     </>
     )
 }

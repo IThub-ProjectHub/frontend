@@ -10,6 +10,7 @@ import UserProfile from "./UserProfile"
 import CreateProject from "./CreateProject"
 import FindProject from "./FindProject"
 import TrackProject from "./TrackProject"
+import ProjectInfo from "./ProjectInfo"
 
 const AppPages = () => {
     const navigate = useNavigate()
@@ -29,6 +30,10 @@ const AppPages = () => {
             <Route
                 path="/profile"
                 element={<UserProfile />}
+            />
+            <Route
+                path="/find/info"
+                element={<ProjectInfo />}
             />
             <Route
                 path="/settings"
