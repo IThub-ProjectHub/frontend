@@ -2,7 +2,7 @@ import { styles } from "../utils/styles"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import countTeam from "../utils/count"
+import ProjectCard from "../components/ProjectCard"
 
 const baseUrl = "/api/projects"
 const headers = "text-[20px] font-bold mb-2"
@@ -47,7 +47,7 @@ const FindProject = () => {
             <h2 className="text-[28px] text-center mt-[40px] font-bold mb-8">Найти проект</h2>
 
             <input
-                className={`${styles.input} w-[300px]`}
+                className={`${styles.input} w-[300px] block mx-auto`}
                 type="text"
                 value={search}
                 placeholder="Введите название проекта"
@@ -83,21 +83,15 @@ const FindProject = () => {
                 </select>
             </label>
         </div>
-        <div>
-            <h2 className={`${headers} `}>Список проектов</h2>
-            {filtered.map(project => <div
-                key={project.id}
-                className="max-w-[300px] mx-auto"
-            >
-                <h3>{project.name}</h3>
-                <p>{project.industry}</p>
-                <p>{project.users.length} {countTeam(project.users.length)}</p>
-                <p>{project.smdescription}</p>
-                <button
-                    className={`${styles.button}`}
-                    onClick={() => handleLocation(project)}
-                >Перейти</button>
-            </div>)}
+        <div className="mt-4">
+            <h2 className={`${headers} ml-2 text-[23px]`}>Список проектов</h2>
+            {filtered.map(project =>
+                <ProjectCard
+                    key={project.id}
+                    project={project}
+                    handleFunc={handleLocation}
+                />
+            )}
         </div>
     </>
     )
